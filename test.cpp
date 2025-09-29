@@ -1,36 +1,22 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-  int n;
-  cout << "enter n : ";
-  cin >> n;
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < (n - i); j++) {
-      cout << " ";
-    }
-    cout << "*";
-    if (i != 0) {
-      for (int j = 0; j < (2 * i - 1); j++) {
-        cout << " ";
-      }
-      cout << "*";
-    }
-    cout << endl;
+int decToBinary(int n) {
+  int ans = 0, pow = 1;
+  while (n > 0) {
+    int rem = n % 2;
+    n = n / 2;
+    ans = ans + (rem * pow);
+    pow *= 10;
   }
+  return ans;
+}
 
-  for (int i = 0; i < n - 1; i++) {
-    for (int j = 0; j <= i + 1; j++) {
-      cout << " ";
-    }
-    cout << "*";
-    if (i != n - 2) {
-      for (int j = 0; j < 2 * (n - i) - 5; j++) {
-        cout << " ";
-      }
-      cout << "*";
-    }
-    cout << endl;
-  }
+int main() {
+  int decNum;
+  cout << "enter num : ";
+  cin >> decNum;
+
+  cout << decToBinary(decNum) << endl;
   return 0;
 }
