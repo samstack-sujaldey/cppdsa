@@ -3,21 +3,15 @@ using namespace std;
 
 int main() {
   int n;
-  cout << "enter n : ";
+  cout << "enter N : ";
   cin >> n;
-  int spaces = 2 * (n - 1);
+  int num = 0;
   for (int i = 0; i < n; i++) {
     for (int j = 0; j <= i; j++) {
-      cout << j + 1;
-    }
-    for (int j = 0; j < spaces; j++) {
-      cout << " ";
-    }
-    for (int j = i; j >= 0; j--) {
-      cout << j + 1;
+      num += 1;
+      cout << num << " ";
     }
     cout << endl;
-    spaces -= 2;
   }
   return 0;
 }
