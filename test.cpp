@@ -3,22 +3,13 @@ using namespace std;
 
 int main() {
   int n;
-  cout << "enter N : ";
+  cout << "enter n : ";
   cin >> n;
   for (int i = 0; i < n; i++) {
-    for (int j = 0; j < n - (i + 1); j++) {
-      cout << " ";
-    }
-    char ch = 'A';
+    char ch = 'A' + (n - 1);
+    ch -= i;
     for (int j = 0; j <= i; j++) {
-      cout << ch;
-      ch += 1;
-    }
-    for (int j = 1; j <= i; j++) {
-      char ch = 'A';
-      if (i >= 1) {
-        cout << char(ch + (i - j));
-      }
+      cout << char(ch + j);
     }
     cout << endl;
   }
