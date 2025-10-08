@@ -2,19 +2,34 @@
 using namespace std;
 
 int main() {
-  int n;
-  cout << "enter n : ";
-  cin >> n;
-  for (int i = 0; i < 2 * n - 1; i++) {
-    for (int j = 0; j < 2 * n - 1; j++) {
-      int top = i;
-      int bottom = j;
-      int left = (2 * n - 2) - i;
-      int right = (2 * n - 2) - j;
-
-      cout << (n - min(min(top, bottom), min(left, right)));
-    }
-    cout << endl;
+  int days;
+  cout << "enter day no. : ";
+  cin >> days;
+  switch (days) {
+  case 1:
+    cout << "Monday" << endl;
+    break;
+  case 2:
+    cout << "Tuesday" << endl;
+    break;
+  case 3:
+    cout << "Wednesday" << endl;
+    break;
+  case 4:
+    cout << "Thursday" << endl;
+    break;
+  case 5:
+    cout << "Friday" << endl;
+    break;
+  case 6:
+    cout << "Saturday" << endl;
+    break;
+  case 7:
+    cout << "Sunday" << endl;
+    break;
+  default:
+    cout << "Invalid" << endl;
+    break;
   }
   return 0;
 }
