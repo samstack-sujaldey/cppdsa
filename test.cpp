@@ -1,4 +1,6 @@
+#include <cmath>
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
@@ -6,16 +8,16 @@ int main() {
   cout << "enter n : ";
   cin >> n;
   int dup = n;
-  int rev = 0;
+  int p = to_string(n).length();
+  int ans = 0;
   while (n != 0) {
     int ld = n % 10;
     n /= 10;
-    rev = rev * 10 + ld;
+    ans += pow(ld, p);
   }
-  if (rev == dup) {
-    cout << "is palindrome" << endl;
+  if (ans == dup) {
+    cout << "is armstrong" << endl;
   } else {
-    cout << "not palindrome" << endl;
+    cout << "not armstrong" << endl;
   }
-  return 0;
 }
