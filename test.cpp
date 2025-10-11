@@ -1,27 +1,21 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main() {
   int n;
   cout << "enter n : ";
   cin >> n;
-  string num = to_string(n);
-  int l = 0;
-  int r = num.length() - 1;
-  bool check = true;
-  while (check && l < r) {
-    if (num[l] == num[r]) {
-      l++;
-      r--;
-    } else {
-      check = false;
-      cout << "not palindrome" << endl;
-      return 0;
-    }
+  int dup = n;
+  int rev = 0;
+  while (n != 0) {
+    int ld = n % 10;
+    n /= 10;
+    rev = rev * 10 + ld;
   }
-  if (check) {
+  if (rev == dup) {
     cout << "is palindrome" << endl;
+  } else {
+    cout << "not palindrome" << endl;
   }
   return 0;
 }
