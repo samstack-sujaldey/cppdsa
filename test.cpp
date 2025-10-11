@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stack>
 #include <string>
 using namespace std;
 
@@ -7,29 +6,22 @@ int main() {
   int n;
   cout << "enter n : ";
   cin >> n;
-  stack<int> stk;
-  int rev = 0;
-  while (n != 0) {
-    int ld = n % 10;
-    stk.push(ld);
-    n /= 10;
-    rev = rev * 10 + ld;
-  }
-  string chk2 = to_string(rev);
+  string num = to_string(n);
+  int l = 0;
+  int r = num.length() - 1;
   bool check = true;
-  int i = 0;
-  while (!stk.empty() && check) {
-    if (stk.top() != chk2[i] - '0') {
+  while (check && l < r) {
+    if (num[l] == num[r]) {
+      l++;
+      r--;
+    } else {
       check = false;
-      break;
+      cout << "not palindrome" << endl;
+      return 0;
     }
-    stk.pop();
-    i++;
   }
   if (check) {
     cout << "is palindrome" << endl;
-  } else {
-    cout << "not palindrome" << endl;
   }
   return 0;
 }
