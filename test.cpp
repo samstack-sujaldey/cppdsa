@@ -1,7 +1,5 @@
-#include <algorithm>
 #include <cmath>
 #include <iostream>
-#include <vector>
 using namespace std;
 
 int main() {
@@ -9,19 +7,19 @@ int main() {
   cout << "enter n : ";
   cin >> n;
   int sqrtN = sqrt(n);
-  vector<int> arr;
-  for (int i = 1; i <= sqrtN; i++) {
+  int count = 0;
+  for (int i = 1; i <= sqrtN; ++i) {
     if (n % i == 0) {
-      arr.push_back(i);
+      ++count;
       if (i != n / i) {
-        arr.push_back(n / i);
+        ++count;
       }
     }
   }
-  sort(arr.begin(), arr.end());
-  for (auto ele : arr) {
-    cout << ele << " ";
+  if (count > 2 || count < 2) {
+    cout << "not prime" << endl;
+  } else {
+    cout << "is prime" << endl;
   }
-  cout << endl;
   return 0;
 }
