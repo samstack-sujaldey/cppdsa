@@ -1,23 +1,27 @@
+#include <algorithm>
 #include <cmath>
 #include <iostream>
-#include <string>
+#include <vector>
 using namespace std;
 
 int main() {
   int n;
   cout << "enter n : ";
   cin >> n;
-  int dup = n;
-  int p = to_string(n).length();
-  int ans = 0;
-  while (n != 0) {
-    int ld = n % 10;
-    n /= 10;
-    ans += pow(ld, p);
+  int sqrtN = sqrt(n);
+  vector<int> arr;
+  for (int i = 1; i <= sqrtN; i++) {
+    if (n % i == 0) {
+      arr.push_back(i);
+      if (i != n / i) {
+        arr.push_back(n / i);
+      }
+    }
   }
-  if (ans == dup) {
-    cout << "is armstrong" << endl;
-  } else {
-    cout << "not armstrong" << endl;
+  sort(arr.begin(), arr.end());
+  for (auto ele : arr) {
+    cout << ele << " ";
   }
+  cout << endl;
+  return 0;
 }
