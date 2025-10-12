@@ -1,18 +1,26 @@
+#include <algorithm>
 #include <iostream>
 using namespace std;
-
-int fact(int n) {
-  if (n == 1 || n == 0) {
-    return 1;
-  } else {
-    return n * fact(n - 1);
-  }
-}
 
 int main() {
   int n;
   cout << "enter n : ";
   cin >> n;
-  cout << fact(n) << endl;
+  int arr[n];
+  cout << "enter array elements : ";
+  for (int i = 0; i < n; i++) {
+    cin >> arr[i];
+  }
+  int l = 0;
+  int r = n - 1;
+  while (l < r) {
+    swap(arr[l], arr[r]);
+    l++;
+    r--;
+  }
+  for (auto e : arr) {
+    cout << e << " ";
+  }
+  cout << endl;
   return 0;
 }
