@@ -1,19 +1,21 @@
-#include <algorithm>
 #include <iostream>
 using namespace std;
 
 int main() {
-  int n;
-  cout << "enter N : ";
-  cin >> n;
-  int arr[n];
-  for (int i = 0; i < n; i++) {
-    cin >> arr[i];
+  string s;
+  cout << "enter s : ";
+  cin >> s;
+  int l = 0;
+  int r = s.length() - 1;
+  while (l < r) {
+    if (s[l] == s[r]) {
+      ++l;
+      --r;
+    } else {
+      cout << "Not Palindrome" << endl;
+      return 0;
+    }
   }
-  reverse(arr, arr + n);
-  for (auto e : arr) {
-    cout << e << " ";
-  }
-  cout << endl;
+  cout << "Is Palindrome" << endl;
   return 0;
 }
