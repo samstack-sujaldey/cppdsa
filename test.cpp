@@ -1,3 +1,4 @@
+#include <cctype>
 #include <iostream>
 using namespace std;
 
@@ -6,16 +7,20 @@ int main() {
   cout << "enter s : ";
   cin >> s;
   int l = 0;
-  int r = s.length() - 1;
+  int r = s.size() - 1;
   while (l < r) {
-    if (s[l] == s[r]) {
-      ++l;
-      --r;
-    } else {
-      cout << "Not Palindrome" << endl;
+    if (!isalnum(s[l])) {
+      l++;
+    } else if (!isalnum(s[r])) {
+      r--;
+    } else if (tolower(s[l]) != tolower(s[r])) {
+      cout << "not palindrome" << endl;
       return 0;
+    } else {
+      l++;
+      r--;
     }
   }
-  cout << "Is Palindrome" << endl;
+  cout << "is palindrome" << endl;
   return 0;
 }
