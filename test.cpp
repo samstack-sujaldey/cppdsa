@@ -1,26 +1,18 @@
-#include <cctype>
 #include <iostream>
 using namespace std;
+
+bool isPalindrome(string s, int i) {
+  if (i >= s.size() / 2)
+    return true;
+  if (s[i] != s[s.size() - i - 1])
+    return false;
+  return isPalindrome(s, i + 1);
+}
 
 int main() {
   string s;
   cout << "enter s : ";
   cin >> s;
-  int l = 0;
-  int r = s.size() - 1;
-  while (l < r) {
-    if (!isalnum(s[l])) {
-      l++;
-    } else if (!isalnum(s[r])) {
-      r--;
-    } else if (tolower(s[l]) != tolower(s[r])) {
-      cout << "not palindrome" << endl;
-      return 0;
-    } else {
-      l++;
-      r--;
-    }
-  }
-  cout << "is palindrome" << endl;
+  cout << boolalpha << isPalindrome(s, 0) << endl;
   return 0;
 }
