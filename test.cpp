@@ -1,21 +1,22 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-void towerOFHanoi(int numOFDisks, char needle1, char needle3, char needle2);
-
 int main() {
-  int n;
-  cout << "enter n : ";
-  cin >> n;
-  towerOFHanoi(n, 'A', 'B', 'C');
-  return 0;
-}
+  ios::sync_with_stdio(0);
+  cin.tie(0);
 
-void towerOFHanoi(int numOFDisks, char needle1, char needle3, char needle2) {
-  if (numOFDisks > 0) {
-    towerOFHanoi(numOFDisks - 1, needle1, needle2, needle3);
-    cout << "Move disk " << numOFDisks << " from " << needle1 << " to "
-         << needle3 << "." << endl;
-    towerOFHanoi(numOFDisks - 1, needle2, needle3, needle1);
+  string s;
+  cin >> s;
+  vector<int> hashmap(256);
+  for (int i = 0; i < s.length(); i++) {
+    hashmap[s[i]]++;
   }
+  int size;
+  cin >> size;
+  while (size--) {
+    char ch;
+    cin >> ch;
+    cout << hashmap[ch] << endl;
+  }
+  return 0;
 }
