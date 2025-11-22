@@ -5,18 +5,24 @@ int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  string s;
-  cin >> s;
-  vector<int> hashmap(256);
-  for (int i = 0; i < s.length(); i++) {
-    hashmap[s[i]]++;
+  int n;
+  cin >> n;
+  vector<int> arr(n);
+  for (int i = 0; i < n; i++) {
+    cin >> arr[i];
   }
-  int size;
-  cin >> size;
-  while (size--) {
-    char ch;
-    cin >> ch;
-    cout << hashmap[ch] << endl;
+
+  map<int, int> mp;
+  for (int i = 0; i < n; i++) {
+    mp[arr[i]]++;
+  }
+
+  int q;
+  cin >> q;
+  while (q--) {
+    int num;
+    cin >> num;
+    cout << mp[num] << endl;
   }
   return 0;
 }
