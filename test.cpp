@@ -2,23 +2,40 @@
 using namespace std;
 
 int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
 
+  int k;
+  cin >> k;
+
+  deque<int> dq;
   vector<int> arr;
   int x;
-
   while (cin >> x) {
     arr.push_back(x);
   }
 
-  unordered_map<int, int> mp;
+  vector<int> res;
+
   for (int i = 0; i < arr.size(); i++) {
-    mp[arr[i]]++;
+    if (!dq.empty() && dq.front() <= i - k) {
+      dq.pop_front();
+    }
+
+    while (!dq.empty() && arr[dq.back()] <= arr[i]) {
+      dq.pop_back();
+    }
+
+    dq.push_back(i);
+
+    if (i >= k - 1) {
+      res.push_back(arr[dq.front()]);
+    }
   }
 
-  for (auto e : mp) {
-    cout << e.first << " -> " << e.second << endl;
+  for (auto e : res) {
+    cout << e << " ";
   }
+  cout << endl;
   return 0;
 }
