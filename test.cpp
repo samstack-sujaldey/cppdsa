@@ -5,35 +5,25 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int k;
-  cin >> k;
-
-  deque<int> dq;
-  vector<int> arr;
   int x;
+  vector<int> arr;
   while (cin >> x) {
     arr.push_back(x);
   }
 
-  vector<int> res;
-
   for (int i = 0; i < arr.size(); i++) {
-    if (!dq.empty() && dq.front() <= i - k) {
-      dq.pop_front();
+    int min = i;
+    for (int j = i + 1; j < arr.size(); j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
     }
-
-    while (!dq.empty() && arr[dq.back()] <= arr[i]) {
-      dq.pop_back();
-    }
-
-    dq.push_back(i);
-
-    if (i >= k - 1) {
-      res.push_back(arr[dq.front()]);
-    }
+    int temp = arr[min];
+    arr[min] = arr[i];
+    arr[i] = temp;
   }
 
-  for (auto e : res) {
+  for (auto e : arr) {
     cout << e << " ";
   }
   cout << endl;
