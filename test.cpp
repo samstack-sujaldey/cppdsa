@@ -11,21 +11,20 @@ int main() {
     arr.push_back(x);
   }
 
-  for (int i = 0; i < arr.size(); i++) {
-    int min = i;
-    for (int j = i + 1; j < arr.size(); j++) {
-      if (arr[j] < arr[min]) {
-        min = j;
+  for (int i = arr.size() - 1; i >= 0; i--) {
+    for (int j = 0; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        int temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
       }
     }
-    int temp = arr[min];
-    arr[min] = arr[i];
-    arr[i] = temp;
   }
 
   for (auto e : arr) {
     cout << e << " ";
   }
+
   cout << endl;
   return 0;
 }
